@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+            $( document ).ready(function(){
+
+
+            }); 
+        </script>
+        <script type="text/javascript">
+            //lanzar una alerta
+            function showAlert () {
+                    navigator.notification.alert("Mensaje", null, "titulo", "ok");
+            }
+
+            //una confirmacion
+            function showConfirm(){
+                navigator.notification.confirm("Desea confirmar algo?", onConfirmCallback, "Confirmacion", "Yes,No");
+            }
+            function onConfirmCallback (btnIndex) {
+                if(btnIndex == 1){
+                    navigator.notification.alert("Confirmaste que Si", null, "Confirmado", "ok");
+                }
+                else{
+                    navigator.notification.alert("NOPE", null, "Confirmado", "ok");
+                }
+            }
+
+
+            function showPrompt(){
+                navigator.notification.prompt("Pon algo", onConfirmCallback,  "ok", ['ok', 'Cancelar'], "texto dos");
+            }
+
+            function showbeep () {
+                navigator.notification.beep(1);
+                navigator.notification.vibrate(2000);
+            }
+
+        </script>
+        <title>Hello World</title>
+    </head>
+    <body> 
+        <br/>
+        <a class="waves-effect waves-light btn orange" onclick="showAlert();">Alerta 1</a>
+        <a class="waves-effect waves-light btn orange" onclick="showConfirm();">Pregunta</a>
+        <a class="waves-effect waves-light btn orange" onclick="showPrompt();">Escribir</a>
+        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+            <a class=" btn-floating btn-large waves-effect waves-light orange" onclick="showbeep();">
+                <i class="mdi-action-alarm"></i>
+            </a>
+        </div>
+   
+    </body>
+</html>
