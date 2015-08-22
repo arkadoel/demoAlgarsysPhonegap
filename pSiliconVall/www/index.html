@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=3, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+        <script src="js/jquery-2.1.4.min.js"></script>
+        
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <style>
+        </style>
+        
+        <script type="text/javascript">
+            app.initialize();
+            $( document ).ready(function(){
+                $(".button-collapse").sideNav();
+                
+                
+                $("#btnCarga").click(function(){
+       				alert('llega');
+                	$('.container').load('pagina.html');
+                });
+				
+				
+
+
+            }); 
+            
+			function irLogin() {           			
+				$('.container').load('paginas/login.html');
+				$(".button-collapse").sideNav('hide');
+			}
+			
+			function irTarifas() {           			
+				$('.container').load('paginas/tarifas.html');
+				$(".button-collapse").sideNav('hide');
+			}
+			function irCursos() {           			
+				$('.container').load('paginas/cursos.html');
+				$(".button-collapse").sideNav('hide');
+			}
+			function irInicio() {           			
+				$('.container').load('paginas/inicio.html');
+				$(".button-collapse").sideNav('hide');
+
+			}
+			
+			
+
+	var successCb = function () {
+        // Generic callback function
+        console.log("API success");
+    }
+
+    var failureCb = function (error) {
+        // Generic callback function
+        alert(error);
+    }
+    
+    var options = {
+                        "message" : "Tiene una notificacion",
+                        "title"	: "SiliconVall",
+                        "seconds" : 1,
+                        "smallIcon"	: 'icon.png' ,
+                        "badge" : 0,
+                    };
+    
+    function llamada(){
+    	/*localNotification.add(1, {
+		    seconds: 30,
+		    icon: "http://proyectonan.blogspot.com.es/favicon.ico",
+		    message: "Esto es un mensaje",
+		    title: "Mensaje",
+		    badge: 1
+	    });
+	    localNotification.getApplicationBadge(function(badgeValue){
+		    alert("Our application badge value is: " + badgeValue);
+		});
+		*/
+		
+		window.localNotification.add("GAME_NOTIFICATION", options, function () {
+                            alert("Successfully scheduled:\n" + JSON.stringify(options));
+                            successCb();
+                        }, failureCb);
+        navigator.notification.vibrate(1000);
+    }
+			
+        </script>
+        <title>Hello World</title>
+    </head>
+	<body class="white">
+	<nav>
+		<div class="#00c853 green accent-4 nav-wrapper " >
+	     <a href="#!" class="brand-logo " tyle="color: black">
+	     	<!--<img src="img/logo.png" style="height: 50px; width: 50px; margin-left: 10%;" />-->
+			SILICONVALL
+		</a>
+	     <a href="#" data-activates="mobile-demo" class="button-collapse ">
+	     	<i class="mdi-navigation-menu dark"></i>
+	     </a>
+	     <ul class="right hide-on-med-and-down">
+	     	<!-- PARTE NO MOVIL -->
+	       <li><a href="javascript: irLogin();">Acceso padres</a></li>
+	     </ul>
+	     <ul class="side-nav" id="mobile-demo">
+	     	<div style="color:white" class="#00c853 green accent-4">
+	     		<img src="img/logo.png" style="height:90px;" /><br/>
+	     		<!--<img src="img/letras_logo.png" style="width: 90%;" />-->
+	     		<span style="font-size: 24pt; text-align: center; margin-left: 5px;">SILICONVALL</span>
+	     	</div>
+	     	
+	     	<li><a href="javascript: irInicio();">INICIO</a></li>
+	     	<li><a href="javascript: irCursos();">CURSOS</a></li>
+	     	<li><a href="javascript: irTarifas();">TARIFAS</a></li>
+	       <li><a href="javascript: irLogin();">Acceso padres</a></li>
+	       
+	     </ul>
+	   </div>
+  	</nav>
+	
+	   
+	    <div class="container">
+	        
+	        
+	    </div>    
+
+
+        
+    </body>
+</html>

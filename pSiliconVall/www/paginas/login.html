@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+
+<html>
+	<head>
+		<script type="text/javascript">
+		$("#btn").on('click', function(){
+
+			formData = {
+		    	usermail: $('#usermail').val(),
+		    	mypass: $('#mypass').val()
+			}
+			
+			$.ajax({
+			    url: "http://192.168.0.21:80/pSiliconVall/www/php/users.php",
+			    type: "POST",
+			    data: formData,
+			    dataType: "json",
+			    success: function(data) { 
+			        alert('_' + data['message']);
+			    },
+		        error: function() {
+		            alert("Falla conexion");
+		        }
+			    
+			    
+			    
+			});
+		});
+		</script>
+	</head>
+	<body>
+
+		<h1><img src="img/letras_logo.png" style="width: 200px;" />
+	            
+	        </h1>
+	        <form action="./paginas/doLogin.php" method="post">
+	           <div class="input-field col s6">
+		          <input id="usermail" name="usermail" type="text" class="validate">
+		          <label>Usuario</label>
+		        </div>
+		        <div class="input-field col s6">
+	            	<input style="background-color:white;"  type="password" id="mypass" name="mypass"/>
+	            	<label >Contraseña</label>
+	            </div>
+	            <!--<input class="btn green accent-4" type="submit" value="Entrar"/>-->
+	            <input id="btn" onclick="enviar();" class="btn green accent-4" type="button" value="Entrar"/>
+	        </form>
+	        <br/><br/><br/>
+	</body>
+	
+</html>

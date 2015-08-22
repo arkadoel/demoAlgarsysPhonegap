@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+
+<html>
+	<body>
+		<script type="text/javascript">
+            //lanzar una alerta
+            function showAlert () {
+            	alert('llega');
+                    navigator.notification.alert("Mensaje", null, "titulo", "ok");
+            }
+
+            //una confirmacion
+            function showConfirm(){
+                navigator.notification.confirm("Desea confirmar algo?", onConfirmCallback, "Confirmacion", "Yes,No");
+            }
+            function onConfirmCallback (btnIndex) {
+                if(btnIndex == 1){
+                    navigator.notification.alert("Confirmaste que Si", null, "Confirmado", "ok");
+                }
+                else{
+                    navigator.notification.alert("NOPE", null, "Confirmado", "ok");
+                }
+            }
+
+
+            function showPrompt(){
+                navigator.notification.prompt("Pon algo", onConfirmCallback,  "ok", ['ok', 'Cancelar'], "texto dos");
+            }
+
+            function showbeep () {
+                navigator.notification.beep(1);
+                navigator.notification.vibrate(2000);
+            }
+
+        </script>
+		<h1><img src="img/letras_logo.png" style="width: 200px;" />
+	            
+	        </h1>
+	        <form action="login.php" method="post">
+	           <div class="input-field col s6">
+		          <input id="last_name" type="text" class="validate">
+		          <label for="last_name">Last Name</label>
+		        </div>
+	            <input style="background-color:white;"  type="password" name="pass"/>
+	            <input class="btn" type="submit" value="Entrar"/>
+	        </form>
+	        <br/><br/><br/>
+	        <a class="waves-effect waves-light btn orange" onclick="showAlert();">Alerta 1</a>
+            <a class="waves-effect waves-light btn orange" onclick="showConfirm();">Pregunta</a>
+            <a class="waves-effect waves-light btn orange" onclick="showPrompt();">Escribir</a>
+            <br/>
+            <a class="waves-effect waves-light btn orange" onclick="llamada();">ver notificacion</a>
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <a class=" btn-floating btn-large waves-effect waves-light orange" onclick="showbeep();">
+                    <i class="mdi-action-alarm"></i>
+            </a>
+	</body>
+	
+</html>
