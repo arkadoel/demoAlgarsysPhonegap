@@ -3,6 +3,7 @@
 
 <html>
 	<head>
+		<script src="js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript">
 		$("#btn").on('click', function(){
 
@@ -12,12 +13,13 @@
 			}
 			
 			$.ajax({
-			    url: "http://192.168.0.21:80/pSiliconVall/www/php/users.php",
+			    url: "http://192.168.0.23:80/pSiliconVall/www/php/users.php",
 			    type: "POST",
 			    data: formData,
 			    dataType: "json",
 			    success: function(data) { 
 			        alert('_' + data['message']);
+			        $('.container').load('paginas/padres.html');
 			    },
 		        error: function() {
 		            alert("Falla conexion");
@@ -29,15 +31,15 @@
 		});
 		</script>
 	</head>
-	<body>
+	<body >
 
 		<h1><img src="img/letras_logo.png" style="width: 200px;" />
 	            
 	        </h1>
-	        <form action="./paginas/doLogin.php" method="post">
+	        <!--<form action="./paginas/doLogin.php" method="post">-->
 	           <div class="input-field col s6">
 		          <input id="usermail" name="usermail" type="text" class="validate">
-		          <label>Usuario</label>
+		          <label>Email</label>
 		        </div>
 		        <div class="input-field col s6">
 	            	<input style="background-color:white;"  type="password" id="mypass" name="mypass"/>
@@ -45,7 +47,7 @@
 	            </div>
 	            <!--<input class="btn green accent-4" type="submit" value="Entrar"/>-->
 	            <input id="btn" onclick="enviar();" class="btn green accent-4" type="button" value="Entrar"/>
-	        </form>
+	        <!--</form>-->
 	        <br/><br/><br/>
 	</body>
 	

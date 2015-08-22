@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+
+<html>
+	<head>
+		<script type="text/javascript">
+		
+			    
+	    function llamada(opciones){
+			
+			window.localNotification.add("GAME_NOTIFICATION", options, function () {
+	                            
+	                            successCb();
+	                        }, failureCb);
+	        navigator.notification.vibrate(1000);
+	    }
+		
+		$("#btn").on('click', function(){
+
+			formData = {
+		    	id: 1
+			}
+			
+			$.ajax({
+			    url: "http://192.168.0.23:80/pSiliconVall/www/php/vernotificaciones.php",
+			    type: "POST",
+			    data: formData,
+			    dataType: "json",
+			    success: function(data) { 
+			        alert('_' + data['message']['mensaje']);
+			        var opciones = {
+                        "message" : data['message']['mensaje'],
+                        "title"	: "SiliconVall",
+                        "seconds" : 1,
+                        "smallIcon"	: 'icon.png' ,
+                        "badge" : 0,
+                    };
+                    
+                    llamada(opciones);
+			    },
+		        error: function() {
+		            alert("Falla conexion");
+		        }
+			    
+			    
+			    
+			});
+		});
+	</script>
+	</head>
+	<body>
+		<br/><br/>
+		Zona de padres
+		
+		<input id="btn" onclick="enviar();" class="btn green accent-4" type="button" value="Entrar"/>
+	        <br/><br/><br/>
+	</body>
+	
+</html>

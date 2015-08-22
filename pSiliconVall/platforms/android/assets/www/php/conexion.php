@@ -72,4 +72,26 @@ function hacerLogin($email='', $mypass='')
     } 
 }
 
+function getNotificaciones($idusuario=0)
+{
+	if($idusuario != 0){
+		$con = conectar();		
+		$sql = "SELECT * FROM `notificaciones` WHERE idusuario = $idusuario;"; 
+	    $rec = mysql_query($sql); 
+	    $count = 0; 
+	  
+	    while($row = mysql_fetch_object($rec)) 
+	    { 
+	        $count++; 
+	        $result = $row; 
+	    } 
+		
+		if($count >0){
+			return $result;
+		}
+		else return "0";
+  
+	}
+}
+
 ?> 
