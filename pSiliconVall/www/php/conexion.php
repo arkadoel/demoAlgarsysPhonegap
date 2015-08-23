@@ -24,7 +24,7 @@ function cerrarConexion($con=NULL)
 	if($con != NULL)
 	{
 		mysql_close($con);
-		cerrarSesion();
+		
 	}
 }
 
@@ -72,6 +72,9 @@ function hacerLogin($email='', $mypass='')
     } 
 }
 
+/**
+ * Obtiene las notificaciones para un determinado usuario
+ */
 function getNotificaciones($idusuario=0)
 {
 	if($idusuario != 0){

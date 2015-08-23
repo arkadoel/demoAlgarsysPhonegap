@@ -1,7 +1,10 @@
 <?php
 $response = array();
+$response["success"] = 0;
 
 $idusuario = $_POST['id'];
+
+$response["success"] = 1;
 
 include('conexion.php');
 $resultado = getNotificaciones($idusuario);
@@ -12,10 +15,14 @@ if($resultado != "0")
 }
 else 
 {
+	$response["success"] = 0;
 	$response["message"] =  "fallo";
 }
+	
 
-$response["success"] = 1;
+
+
+
 //$response["message"] = $_POST['usermail'];
 // echoing JSON response
 echo json_encode($response);
